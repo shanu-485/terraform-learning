@@ -4,9 +4,12 @@ on:
   push:
     branches:
       - main
+
   pull_request:
     branches:
       - main
+
+  workflow_dispatch:
 
 permissions:
   id-token: write
@@ -44,7 +47,12 @@ jobs:
         run: terraform fmt -check
 
       - name: Terraform Validate
+
         run: terraform validate
 
       - name: Terraform Plan
         run: terraform plan
+
+      - name: Terraform Apply
+        if: github.event_name == 'workflow_dispatch'
+        run: terraform apply -auto-approve
