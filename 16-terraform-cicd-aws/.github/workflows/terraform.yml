@@ -19,7 +19,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: 16-terraform-cicd-aws
+        working-directory: ./16-terraform-cicd-aws
 
     steps:
       - name: Checkout
@@ -28,16 +28,10 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
-      - name: Debug GitHub OIDC claims
-        run: |
-          echo "Repository: $GITHUB_REPOSITORY"
-          echo "Ref: $GITHUB_REF"
-          echo "Event: $GITHUB_EVENT_NAME"
-
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v6
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          role-to-assume: arn:aws:iam::750708765435:role/GitHubActionsTerraformRole
           aws-region: ap-south-1
 
       - name: Check AWS Identity
