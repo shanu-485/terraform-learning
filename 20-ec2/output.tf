@@ -1,0 +1,24 @@
+output "instance_id" {
+  description = "EC2 instance ID"
+  value       = aws_instance.web.id
+}
+
+output "public_ip" {
+  description = "EC2 public IP address"
+  value       = aws_instance.web.public_ip
+}
+
+output "public_dns" {
+  description = "EC2 public DNS"
+  value       = aws_instance.web.public_dns
+}
+
+output "private_ip" {
+  description = "EC2 private IP address"
+  value       = aws_instance.web.private_ip
+}
+
+output "security_group_id" {
+  description = "EC2 security group ID"
+  value       = aws_security_group.ec2.id
+}
