@@ -1,0 +1,15 @@
+output "vpc_id" {
+  description = "Selected VPC ID"
+  value       = data.aws_vpc.selected.id
+}
+
+output "security_group_id" {
+  description = "Created security group ID"
+  value       = aws_security_group.web.id
+}
+
+output "security_group_name" {
+  description = "Created security group name"
+  value       = aws_security_group.web.name
+}
+
